@@ -6,11 +6,12 @@
  */
 
 var gameState = "splash";
+var player1;
 
 function setup() {
-
   createCanvas(600, 400);
-
+  player1 = new Player(width/2, height* 4/5);
+  console.log(player1);
 }
 
 function draw() {
@@ -19,8 +20,8 @@ function draw() {
  // splash(); // call the splash screen function (below)
  // play(); // call the play screen function (below)
  // gameOver(); // call the gameOver screen function (below)
- switch (gameState)  {
-  case "splash" :
+  switch (gameState)  {
+    case "splash" :
     splash(); // go to the "splash" screen
     break;
   case "play" :
@@ -51,7 +52,29 @@ function play() {
   textAlign(CENTER);
   textSize(16);
   text("This is where the Game happens", width / 2, height / 2);
-
+  //player1.x = mouseX; 
+  //player1.y = mouseY;
+  player1.display();
+  player1.move();
+ 
+  if(keyIsPressed){
+    switch(keyCode){
+      case UP_ARROW:
+        player1.thrust(); // accelerate
+        break;
+      case DOWN_ARROW:
+        player1.brake();
+        break;
+      case LEFT_ARROW:
+        player1.angle -= .02; //turn left
+        break;
+      case RIGHT_ARROW:
+        player1.angle += .02; //turn right
+        break;
+      default:
+        console.log("use the arrow keys to move");
+     }
+  }
 }
 
 function gameOver() {
@@ -75,3 +98,31 @@ function mousePressed() {
   console.log("click!");
 }
 
+/*
+function keyPressed() { 
+  switch(keyCode) {
+    case UP_ARROW :
+      player1.y -= 30 // move up 30px
+      player1.angle = 0; // no rotation
+      if(player1.y < 0) player1.y = height; // wrap to bottom
+        break;
+    case DOWN_ARROW :
+      player1.y += 30 // move down 30px
+      player1.angle = PI ; // point down (rotate 180 deg.)
+      if(player1.y > height) player1.y = 0; // wrap to top
+        break;
+    case LEFT_ARROW :
+      player1.x -= 30;
+      player1.angle = PI + PI/2;
+      if(player1.x < 0) player1.x = width;
+        break;
+    case RIGHT_ARROW :
+      player1.x += 30;
+      player1.angle = PI/2;
+      if(player1.x > width) player1.x = 0;
+       break;
+      default : // do this if the key doesn't match the list ...
+        console.log("press the arrow keys to move player1");
+  }
+}
+*/
