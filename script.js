@@ -7,11 +7,15 @@
 
 var gameState = "splash";
 var player1;
+var gameTimer;
 
 function setup() {
   createCanvas(600, 400);
   player1 = new Player(width/2, height* 4/5);
   console.log(player1);
+
+  gameTimer = new Timer(5000); // 5 second timer
+  console.log(gameTimer);
 }
 
 function draw() {
@@ -57,6 +61,14 @@ function play() {
   player1.display();
   player1.move();
  
+  if (gameTimer.isFinished()) {
+    gameState = "gameOver"
+  }
+
+  textAlign(LEFT);
+  text("elapsed time: " + gameTimer.elapsedTime, 40, 100); 
+  // show elapsed time in top left corner
+
   if(keyIsPressed){
     switch(keyCode){
       case UP_ARROW:
@@ -90,10 +102,11 @@ function mousePressed() {
 
   if(gameState == "splash") { 
     gameState = "play"; // go to "play"
+    gameTimer.start(); // starts the timer
 } else if(gameState == "play") { 
-    gameState = "gameOver";// go to "gameOver"
+    //gameState = "gameOver";// go to "gameOver"
 } else if(gameState == "gameOver") { 
-    gameState = "splash"; // go to "splash"
+   gameState = "splash"; // go to "splash"
 } 
   console.log("click!");
 }

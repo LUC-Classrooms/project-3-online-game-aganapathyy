@@ -39,7 +39,7 @@ function Player(tempX, tempY) {
       endShape();
       // uncomment the next two lines to see the circle
       //noFill();
-      //ellipse(0, 0, this.diam, this.diam);
+      ellipse(x1, y1, 5);
   
       pop(); // dispose of this layer
   
