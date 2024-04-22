@@ -14,7 +14,7 @@ function setup() {
   player1 = new Player(width/2, height* 4/5);
   console.log(player1);
 
-  gameTimer = new Timer(5000); // 5 second timer
+  gameTimer = new Timer(10000); // 5 second timer
   console.log(gameTimer);
 }
 
