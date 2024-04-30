@@ -47,23 +47,24 @@ function draw() {
 
 function splash() {
   // this is what you would see when the game starts
-  background(200);
+  background(150,200,200);
   textAlign(CENTER);
   textSize(16);
-  text("Let's Play a Game!", width / 2, height / 2);
+  text("GAME START!", width / 2, height / 2);
   textSize(12);
-  text("(click the mouse to continue)", width / 2, height / 2 + 30);
+  text("Use the arrow keys to move the spirit", width / 2, height / 2 + 30);
+  text("(click the mouse to continue)", width / 2, height / 2 + 50);
   testBox.display();
   testBox.spin();
 }
 
 function play() {
   // this is what you see when the game is running 
-  background(0, 200, 0);
+  background(150, 0, 30);
   fill(0, 0, 200)
   textAlign(CENTER);
   textSize(16);
-  text("This is where the Game happens", width / 2, height / 2);
+  //text("This is where the Game happens", width / 2, height / 2);
   //player1.x = mouseX; 
   //player1.y = mouseY;
   player1.display();
@@ -88,7 +89,7 @@ function play() {
     if(presents[i].y > height) {
       // present went below the canvas
       presents.splice(i, 1); // remove 1 element from from "presents" at index 'i'
-      score--; // decrement score by 1
+      //score--; // decrement score by 1
     }
 
     let d = dist(presents[i].x, presents[i].y, player1.x, player1.y);
@@ -100,6 +101,7 @@ function play() {
   }
 
   textAlign(LEFT);
+  fill(50,0,0)
   text("elapsed time: " + gameTimer.elapsedTime, 20, 20); // show elapsed time in top left corner
   text("Score: " + score, 20, 40); 
 
@@ -110,7 +112,7 @@ function play() {
         break;
       case DOWN_ARROW:
         player1.brake();
-        break;
+        break; 
       case LEFT_ARROW:
         player1.angle -= .02; //turn left
         break;
@@ -147,7 +149,7 @@ function mousePressed() {
   console.log("click!");
 }
 
-/*
+
 function keyPressed() { 
   switch(keyCode) {
     case UP_ARROW :
@@ -174,4 +176,3 @@ function keyPressed() {
         console.log("press the arrow keys to move player1");
   }
 }
-*/

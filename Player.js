@@ -29,20 +29,25 @@ function Player(tempX, tempY) {
       // 150 degrees (bottom left): 
       let x3 = cos(PI * 5 / 6) * r;
       let y3 = sin(PI * 5 / 6) * r;
+      let white = color(240);
+      let black = color(0);
       //draw the triangle:
       //triangle(x1, y1, x2, y2, x3, y3);
       //or draw a complex polygon
-      beginShape();
+      /*beginShape();
       vertex(x1, y1);
       vertex(x2, y2);
       vertex(x3, y3);
-      endShape();
-      // uncomment the next two lines to see the circle
-      //noFill();
-      ellipse(x1, y1, 5);
-  
+      endShape(); */
+      fill(black)
+      ellipse(0, 0, this.diam, this.diam);//body
+     //eye
+      fill(white);
+      ellipse(x1, y1/8, r/.5, r/2);
+      fill(black)
+      ellipse(x1, y1/8, r, r);
       pop(); // dispose of this layer
-  
+    
     }
   
   
